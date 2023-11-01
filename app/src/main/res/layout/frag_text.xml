@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/ed_text"
+        android:layout_width="match_parent"
+        android:layout_height="159dp"
+        android:background="@drawable/bg_edittext_high"
+        android:hint="......"
+        android:gravity="start"
+        android:padding="16dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montserrat_md"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/btn_create"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Create"
+        android:fontFamily="@font/montserrat_md"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:background="@drawable/bg_button"/>
+</LinearLayout>
