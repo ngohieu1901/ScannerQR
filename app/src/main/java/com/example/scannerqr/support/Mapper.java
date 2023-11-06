@@ -36,6 +36,25 @@ public class Mapper {
         return result;
     }
 
+    public static ArrayList<String> convertToValueUrl(String content) {
+        String[] parts = content.split("MEBKM:TITLE:|;URL:|;;");
+        String name = parts[1];
+        String link = parts[2];
+        ArrayList<String> result = new ArrayList<>();
+        result.add(name);
+        result.add(link);
+        return result;
+    }
+    public static ArrayList<String> convertToValueEmail(String content) {
+        String[] parts = content.split("mailto:|subject=");
+        String email = parts[1];
+        String subject = parts[2];
+        ArrayList<String> result = new ArrayList<>();
+        result.add(email);
+        result.add(subject);
+        return result;
+    }
+
     public static ArrayList<String> convertToValueWifi(String content) {
         String security = getNthSplit(content, "WIFI:T:", 1).split(";S:")[0];
         String name = getNthSplit(content, ";S:", 1).split(";P:")[0];

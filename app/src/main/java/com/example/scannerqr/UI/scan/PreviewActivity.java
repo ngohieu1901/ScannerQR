@@ -28,7 +28,6 @@ public class PreviewActivity extends AppCompatActivity {
     private Uri selectedImage;
     private BarcodeScannerOptions options;
     private BarcodeScanner barcodeScanner;
-
     private ImageView iv_preview;
     public static boolean isInsert = false;
 

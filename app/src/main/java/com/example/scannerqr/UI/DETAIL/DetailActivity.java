@@ -22,6 +22,7 @@ import com.example.scannerqr.databinding.ActivityDetailBinding;
 import com.example.scannerqr.DTO.CodeDTO;
 import com.example.scannerqr.UI.scan.ScanActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
@@ -53,7 +54,10 @@ public class DetailActivity extends AppCompatActivity {
                     Log.d("handelInsertCode","Value3: "+email);
                     binding.tvDetail.setText("Name: "+name+"\nPhone: "+phone+"\nEmail: "+email);
                 } else if (Integer.parseInt(qrCode.getType()) == 2) {//email
-                    binding.tvDetail.setText(content);
+                    ArrayList<String> result = Mapper.convertToValueEmail(content);
+                    String email = result.get(0);
+                    String sub = result.get(1);
+                    binding.tvDetail.setText("Email: "+email +"\n"+"Subject: "+sub);
                 } else if (Integer.parseInt(qrCode.getType()) == 9) {
                     List<String> content1 = Mapper.convertToValueWifi(content);
                     Log.d("handelInsertCode","Value: "+content1);
@@ -77,7 +81,10 @@ public class DetailActivity extends AppCompatActivity {
                 }else if (Integer.parseInt(qrCode.getType()) == 7){ // text
                     binding.tvDetail.setText(content);
                 }else if (Integer.parseInt(qrCode.getType()) == 8){//url
-                    binding.tvDetail.setText(content);
+                    ArrayList<String> result = Mapper.convertToValueUrl(content);
+                    String name = result.get(0);
+                    String url = result.get(1);
+                    binding.tvDetail.setText("Name: "+name +"\n"+"Url: "+url);
                 }else if (Integer.parseInt(qrCode.getType()) == 32 || Integer.parseInt(qrCode.getType()) == 64){//barcode
                     binding.tvDetail.setText(content);
                 }
@@ -100,7 +107,10 @@ public class DetailActivity extends AppCompatActivity {
                     Log.d("handelInsertCode","Value3: "+email);
                     binding.tvDetail.setText("Name: "+name+"\nPhone: "+phone+"\nEmail: "+email);
                 } else if (Integer.parseInt(qrCode.getType()) == 2) {//email
-                    binding.tvDetail.setText(content);
+                    ArrayList<String> result = Mapper.convertToValueEmail(content);
+                    String email = result.get(0);
+                    String sub = result.get(1);
+                    binding.tvDetail.setText("Email: "+email +"\n"+"Subject: "+sub);
                 } else if (Integer.parseInt(qrCode.getType()) == 9) {
                     List<String> content1 = Mapper.convertToValueWifi(content);
                     Log.d("handelInsertCode","Value: "+content1);
@@ -124,7 +134,10 @@ public class DetailActivity extends AppCompatActivity {
                 }else if (Integer.parseInt(qrCode.getType()) == 7){ // text
                     binding.tvDetail.setText(content);
                 }else if (Integer.parseInt(qrCode.getType()) == 8){//url
-                    binding.tvDetail.setText(content);
+                    ArrayList<String> result = Mapper.convertToValueUrl(content);
+                    String name = result.get(0);
+                    String url = result.get(1);
+                    binding.tvDetail.setText("Name: "+name +"\n"+"Url: "+url);
                 }else if (Integer.parseInt(qrCode.getType()) == 32 || Integer.parseInt(qrCode.getType()) == 64){//barcode
                     binding.tvDetail.setText(content);
                 }
@@ -154,7 +167,8 @@ public class DetailActivity extends AppCompatActivity {
         binding.ivSearch.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                gotoUrl(binding.tvDetail.getText().toString());
+                String content = binding.tvDetail.getText().toString();
+                goToGoogle(content);
             }
         });
     }

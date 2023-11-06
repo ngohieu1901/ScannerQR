@@ -43,7 +43,7 @@ public class EmailFragment extends Fragment {
                 String subject = binding.edSubject.getText().toString();
                 String emailData = "mailto:" + email;
                 if (!subject.isEmpty()) {
-                    emailData += "?subject=" + subject;
+                    emailData += "subject=" + subject;
                 }
                 try {
                     barcodeEncoder = new BarcodeEncoder();
